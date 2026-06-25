@@ -7,8 +7,8 @@ try:
     from streamlit_drawable_canvas import st_canvas
 except ImportError:
     st.error(
-        "Please install streamlit-drawable-canvas:\n\n"
-        "pip install streamlit-drawable-canvas"
+        "Please install streamlit-drawable-canvas-fix:\n\n"
+        "pip install streamlit-drawable-canvas-fix"
     )
     st.stop()
 
@@ -28,7 +28,7 @@ st.set_page_config(
 # ==========================================
 @st.cache_resource
 def load_mnist_model():
-    return load_model("mnist.h5")
+    return load_model("mnist.keras")
 
 
 model = load_mnist_model()

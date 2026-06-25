@@ -1,9 +1,12 @@
 import numpy as np
-import keras
-from keras.datasets import mnist
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
-from keras import backend as K
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
+
+print("TensorFlow version:", tf.__version__)
+print("Keras version:", keras.__version__)
 
 # Load MNIST data
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -52,9 +55,9 @@ hist = model.fit(x_train, y_train,
 
 print("The model has successfully trained")
 
-# Save in modern format
-model.save('mnist.h5')
-print("Saving the model as mnist.h5")
+# Save in modern Keras format (avoids legacy .h5 load issues across versions)
+model.save('mnist.keras')
+print("Saving the model as mnist.keras")
 
 # 0.4 EVALUATING THE MODEL
 score = model.evaluate(x_test, y_test, verbose=0)
